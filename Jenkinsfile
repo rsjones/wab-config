@@ -3,9 +3,9 @@ pipeline {
 	stages {
 		stage('build wab') {
 			steps {
-				powershell "cp -recurse ${params.WAB_TEMPLATE_APP} app"
-				powershell "cp -recurse -force custom-widgets\\widgets app"
-				powershell "cp -recurse -force app-config\\* app"
+				powershell "cp -recurse -force -verbose ${params.WAB_TEMPLATE_APP} app"
+				powershell "cp -recurse -force -verbose custom-widgets\\widgets app"
+				powershell "cp -recurse -force -verbose app-config\\* app"
 				powershell "npm install"
 				powershell "npm run build"
 			}
