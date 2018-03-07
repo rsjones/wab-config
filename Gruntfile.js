@@ -6,6 +6,10 @@ module.exports = function (grunt) {
   
   var appHome = grunt.option('appHome') || 'D:/arcgis-web-appbuilder-2.7/WebAppBuilderForArcGIS/server/apps/2';
   
+  var port = grunt.option('port') || 8080;
+  var host = grunt.option('host') || 'localhost';
+  var path = grunt.option('path') || 'wabapp';
+  
   grunt.initConfig({
 	copy: {
 		wabConfig: {
@@ -43,18 +47,18 @@ module.exports = function (grunt) {
 		}
 	},
 	
-	// Tomcat redeploy task still gets its config from tomcat_deploy
+    // Tomcat redeploy task still gets its config from tomcat_deploy
     // config item
     tomcat_deploy: {
-      host: 'localhost',
+      host: host,
       login: 'tomcat',
       password: 'tomcat',
-      path: '/wabapp',
-      port: 8080,
+      path: '/' + path,
+      port: port,
       war:  'app.zip',
       deploy: '/manager/text/deploy',
       undeploy: '/manager/text/undeploy'
-    }
+    },
   });
   
   grunt.registerTask( 'default', [ 'copy:wabConfig', 'watch'] );
