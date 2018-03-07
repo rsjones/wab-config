@@ -4,7 +4,7 @@
   "description": "Example WAB for Pipeline",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "esri-wab-build app"
   },
   "keywords": [
     "WAB",
@@ -17,5 +17,8 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "esri-wab-build": "^1.0.0"
   }
 }

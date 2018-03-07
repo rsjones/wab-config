@@ -1,0 +1,3 @@
+[submodule "custom-widgets"]
+	path = custom-widgets
+	url = https://github.com/rsjones/wab-widget.git
