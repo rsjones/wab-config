@@ -6,8 +6,8 @@ pipeline {
 				powershell "cp -recurse -force -verbose ${params.WAB_TEMPLATE_APP} app"
 				powershell "cp -recurse -force -verbose custom-widgets\\widgets app"
 				powershell "cp -recurse -force -verbose app-config\\* app"
-				powershell "npm install"
-				powershell "npm run build"
+				bat 'npm install'
+				bat 'npm run build'
 			}
 			post {
 				success {
@@ -15,6 +15,12 @@ pipeline {
 						stash includes: 'app.zip', name: 'app'
 					}
 				}
+			}
+		}
+		stage('deploy') {
+			steps {
+				unstash 'app'
+				bat 'grunt deploy'
 			}
 		}
 	}
