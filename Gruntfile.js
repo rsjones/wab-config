@@ -19,9 +19,28 @@ module.exports = function (grunt) {
 				src: ['config.json'],
 				dest: 'app'
 			}]
+		},
+		applyConfig: {
+			files: [{
+				expand: true,
+				cwd: 'app',
+				src: ['configs/**'],
+				dest: appHome
+			}, {
+				expand: true,
+				cwd: 'app',
+				src: ['config.json'],
+				dest: appHome
+			}]
+		}
+	},
+	watch: {
+		wab:{
+			files: [appHome+'/configs/**', appHome+'/config.json'],
+			tasks: ['copy:wabConfig']
 		}
 	}
   });
   
-  grunt.registerTask( 'default', [ 'copy'] );
+  grunt.registerTask( 'default', [ 'copy:wabConfig', 'watch'] );
 };

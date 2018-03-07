@@ -15,6 +15,7 @@
   "devDependencies": {
     "grunt": "^1.0.2",
     "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
     "watch": "^1.0.2"
   }
 }
