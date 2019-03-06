@@ -4,6 +4,11 @@
   "description": "Example WAB for Pipeline",
   "main": "index.js",
   "scripts": {
+    "copy:config": "xcopy ..\\WebAppBuilderForArcGIS\\server\\apps\\2\\config.json app-config /Y",
+    "copy:configs": "xcopy ..\\WebAppBuilderForArcGIS\\server\\apps\\2\\configs app-config\\configs /Y /S",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:configs": "watch \"npm run copy:configs\" ../WebAppBuilderForArcGIS/server/apps/2/configs/",
+    "watch:config": "onchange \"../WebAppBuilderForArcGIS/server/apps/2/config.json\"  -- npm run copy:config",
     "build": "esri-wab-build app"
   },
   "keywords": [
@@ -13,13 +18,16 @@
   "author": "randysjones",
   "license": "ISC",
   "devDependencies": {
-    "grunt": "^1.0.2",
+    "grunt": "^1.0.3",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
     "grunt-tomcat-deploy": "git://github.com/rsjones/grunt-tomcat-deploy.git",
+    "grunt-zip": "^0.18.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
     "watch": "^1.0.2"
   },
   "dependencies": {
-    "esri-wab-build": "^1.0.0"
+    "esri-wab-build": "^1.1.0"
   }
 }
